@@ -1,0 +1,4 @@
+--target=$HOME/.config
+--ignore=.stowrc
+--dotfiles
+--restow
