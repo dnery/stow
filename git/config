@@ -1,0 +1,92 @@
+[user]
+	email = "${GIT_AUTHOR_EMAIL}"
+	name = "${GIT_AUTHOR_FNAME} ${GIT_AUTHOR_LNAME}"
+[core]
+	editor = nvim
+[push]
+	default = simple
+[alias]
+	co = checkout
+	st = status
+	br = branch
+	ci = commit
+	pl = pull
+	ps = push
+	lo = log --oneline
+	ru = remote update
+	brv = branch -v -v
+	rom = rebase origin/master
+	rod = rebase origin/develop
+	psf = push --force-with-lease
+	rub = !git remote update && git branch -v -v
+	cap = !git commit -a --amend && git push --force-with-lease
+	compare = "!f() { \
+		git branch | tr -d ' '| tr -d '*' | while read -r branch_name; do\
+			if [ \"$branch_name\" != 'develop' ]; then\
+				echo \"---> $branch_name\";\
+				git diff --stat \"origin/develop...${branch_name}\";\
+			fi;\
+		done;\
+		};\
+		f"
+	wayback = "!f() { git diff --name-status HEAD~\"$1\" HEAD; }; f"
+
+	# stash manipulation
+	sp = stash push
+	sa = stash apply
+
+	# log and branch visualization helpers
+	head = !git log --oneline | head
+	tail = !git br | tail
+
+	# Move untracked files to '.stash' directory in user home
+	lclean = "!f() { \
+		[ -d ~/.stash ] || mkdir ~/.stash; \
+		git ls-files --others --exclude-standard | while read -r filename; do \
+			mv \"$filename\" ~/.stash; \
+		done; \
+		}; \
+		f"
+
+	# Move untracked files from '.stash' back into wd
+	lrepop = "!f() { \
+		[ -d ~/.stash ] || mkdir ~/.stash; \
+		for filename in ~/.stash/*; do \
+			mv \"$filename\" .; \
+		done; \
+		}; \
+		f"
+
+	# difftastic shorthand
+	df = difftool
+
+# Diff tool
+[diff]
+	tool = difftastic
+	# Download and install difftastic
+[difftool]
+	prompt = false
+[difftool "difftastic"]
+	cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+	difftool = true
+
+# Merge tool
+[merge]
+	# Download: https://www.perforce.com/downloads/visual-merge-tool
+	# 1. Extract tarball, move bins to /usr/local/bin and libs to /usr/local/lib
+	# 2. On Ubuntu, if you get "application failed to start", install qt5-default package
+	tool = p4merge
+[mergetool "p4merge"]
+	cmd = "p4merge $BASE $LOCAL $REMOTE $MERGED"
+	trustExitCode = false
+	keepTemporaries = false
+	keepBackup = false
+	prompt = false
+
+# LFS settings
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

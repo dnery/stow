@@ -5,13 +5,13 @@ cd "$cwd"
 
 stow .
 
-paths=("security/pam_env.conf" "sudoers.d/danilo")
+set -- "security/pam_env.conf" "sudoers.d/danilo"
 
-for it in "${paths[@]}"; do
+for it in "$@"; do
 	if [ -e "/etc/${it}" ]; then
 		echo "/etc/${it} already exists, skipping"
 	else
-		if [ $UID != 0 ]; then
+		if [ $(id -u) -ne 0 ]; then
 			sudo ln -s "${cwd}/${it}" "/etc/${it}"
 		else
 			ln -s "${cwd}/${it}" "/etc/${it}"

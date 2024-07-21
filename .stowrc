@@ -1,6 +1,9 @@
 --target=$HOME/.config
 --ignore=.stowrc
---ignore=.git*
---ignore=security
+--ignore=.git
+--ignore=.gitignore
+--ignore=.gitmodules
+--ignore=install.sh
+--ignore=etc
 --dotfiles
 --restow
