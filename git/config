@@ -1,6 +1,6 @@
 [user]
-	email = "${GIT_AUTHOR_EMAIL}"
-	name = "${GIT_AUTHOR_FNAME} ${GIT_AUTHOR_LNAME}"
+	name = ''
+	email = ''
 [core]
 	editor = nvim
 [push]
