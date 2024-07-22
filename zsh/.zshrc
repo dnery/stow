@@ -47,7 +47,8 @@ autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 
-# We need a zkbd compatible hash (man 5 terminfo)
+# We need a zkbd compatible hash (man 5 terminfo) - this
+# allows us to refer to keycodes without losing our minds
 typeset -g -A key
 key[Up]="${terminfo[kcuu1]}"
 key[Down]="${terminfo[kcud1]}"
@@ -69,6 +70,26 @@ fi
 fpath=(${ZDOTDIR}/fpath $fpath)
 # __git_complete_command g __git_zsh_main
 alias g='git'
+
+# "File manager" like key binds
+cdUndoKey() {
+	popd
+	zle		reset-prompt
+	print
+	ls
+	zle		reset-prompt
+}
+cdParentKey() {
+	pushd		..
+	zle		reset-prompt
+	print
+	ls
+	zle		reset-prompt
+}
+zle -N			cdParentKey
+zle -N			cdUndoKey
+bindkey '^[[1;3A'	cdParentKey
+bindkey '^[[1;3D'	cdUndoKey
 
 # Source shell commons (make sure this is done last)
 source ${XDG_CONFIG_HOME}/.shell.common
