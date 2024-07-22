@@ -26,7 +26,8 @@ alias l='ls -CF'                              # list by columns (-C) and classif
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Standalone applications to extend shell function
-eval "$(mise activate bash)"
+shellName=$(basename $SHELL)
+eval "$(mise activate $shellName)"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
