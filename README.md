@@ -19,8 +19,16 @@ PSQL_PROD_USERNAME=
 PSQL_PROD_PASSWORD=
 PSQL_PROD_HOST=
 PSQL_PROD_DB=
-GIT_AUTHOR_FNAME=
-GIT_AUTHOR_LNAME=
-GIT_AUTHOR_EMAIL=
+GIT_CONFIG_VALUE_0=<Git author name>
+GIT_CONFIG_VALUE_1=<Git author email>
 ```
-#### 2. Run ./install.sh
+
+#### 2. Install the configuration
+```shell
+./install.sh
+```
+
+#### 3. And do this before commiting new changes
+```shell
+nix run "nixpkgs#gitleaks" detect
+```
