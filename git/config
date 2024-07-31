@@ -3,6 +3,7 @@
 	email = ''
 [core]
 	editor = nvim
+	pager = less -R
 [push]
 	default = simple
 [alias]
@@ -62,14 +63,14 @@
 
 # Diff tool
 [diff]
-	tool = difftastic
-	# Download and install difftastic
+       tool = difftastic
+       # Download and install difftastic
 [difftool]
-	prompt = false
+       prompt = false
 [difftool "difftastic"]
-	cmd = difft "$LOCAL" "$REMOTE"
+       cmd = difft --color always --display side-by-side "$LOCAL" "$REMOTE"
 [pager]
-	difftool = true
+       difftool = true
 
 # Merge tool
 [merge]
@@ -90,3 +91,7 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[core "pager"]
+	difftool = true
+[rerere]
+	enabled = true

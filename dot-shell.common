@@ -35,17 +35,3 @@ eval "$(mise activate $shellName)"
 alias psql_stage='psql postgresql://${PSQL_STAGE_USERNAME}:${PSQL_STAGE_PASSWORD}@${PSQL_STAGE_HOST}/${PSQL_STAGE_DB}?client_encoding=utf-8'
 alias psql_preprod='psql postgresql://${PSQL_PREPROD_USERNAME}:${PSQL_PREPROD_PASSWORD}@${PSQL_PREPROD_HOST}/${PSQL_PREPROD_DB}?client_encoding=utf-8'
 alias psql_prod='psql postgresql://${PSQL_PROD_USERNAME}:${PSQL_PROD_PASSWORD}@${PSQL_PROD_HOST}/${PSQL_PROD_DB}?client_encoding=utf-8'
-
-## SSH agent shenanigans (run this last to avoid issues with interaction)
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-  echo Generating SSH agent env
-  ssh-agent -t 1d > "$XDG_RUNTIME_DIR/ssh-agent.env"
-fi
-if [[ ! -f "$SSH_AUTH_SOCK" ]]; then
-  echo Sourcing SSH agent env
-  source "$XDG_RUNTIME_DIR/ssh-agent.env" > /dev/null
-fi
-if [[ $(ssh-add -l | grep "^.*$" -c) -ne 2 ]]; then
-  ssh-add -t 1d ~/.ssh/deploy > /dev/null
-  ssh-add -t 1d ~/.ssh/edge > /dev/null
-fi

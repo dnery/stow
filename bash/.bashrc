@@ -1,5 +1,7 @@
-export $(envsubst < $XDG_CONFIG_HOME/.shell.id) > /dev/null
-export $(envsubst < $XDG_CONFIG_HOME/.shell.env) > /dev/null
+# Source secrets and env variables (do this first)
+export $(envsubst < $XDG_CONFIG_HOME/.shell.id | awk 'NF && !/^#/') > /dev/null
+export $(envsubst < $XDG_CONFIG_HOME/.shell.env | awk 'NF && !/^#/') > /dev/null
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # To the extent possible under law, the author(s) have dedicated all 
 # copyright and related and neighboring rights to this software to the 
@@ -267,7 +269,7 @@ function dc-shell-fn {
 alias c=dc-fn # compose
 alias cw=cw-fn # watch only
 alias dps=dps-fn # status w/ fmt
-alias mb=dc-shell-fn # start MUI stuff
+# alias mb=dc-shell-fn # start MUI stuff
 
-# Source shell commons (make sure this is done last)
+# Source shell commons (do this last)
 source $XDG_CONFIG_HOME/.shell.common
