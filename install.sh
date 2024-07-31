@@ -9,13 +9,12 @@ set -- "security/pam_env.conf" "sudoers.d/danilo"
 
 for it in "$@"; do
 	if [ -e "/etc/${it}" ]; then
-		echo "/etc/${it} already exists, skipping"
+		echo "/etc/${it} already exists"
+	fi
+	if [ $(id -u) -ne 0 ]; then
+		sudo cp -i "${cwd}/etc/${it}" "/etc/${it}"
 	else
-		if [ $(id -u) -ne 0 ]; then
-			sudo ln -s "${cwd}/${it}" "/etc/${it}"
-		else
-			ln -s "${cwd}/${it}" "/etc/${it}"
-		fi
+		cp -i "${cwd}/etc/${it}" "/etc/${it}"
 	fi
 done
 

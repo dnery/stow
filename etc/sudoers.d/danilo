@@ -30,7 +30,7 @@ Defaults:%sudo env_keep += "GPG_AGENT_INFO"
 Defaults:%sudo env_keep += "ZDOTDIR"
 
 # Preserve my XDG user base just in case
-# Defaults:%sudo env_keep += "ZDOTDIR"
+#TODO
 
 # Allow sudo no-password permissions
 danilo ALL=(ALL) NOPASSWD:ALL
