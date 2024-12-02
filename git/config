@@ -1,6 +1,6 @@
 [user]
-	name = ''
-	email = ''
+	name = Parth-CircleCI
+	email = parth@enlyft.com
 [core]
 	editor = nvim
 	pager = less -R

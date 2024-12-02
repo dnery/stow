@@ -92,5 +92,40 @@ zle -N			cdUndoKey
 bindkey '^[[1;3A'	cdParentKey
 bindkey '^[[1;3D'	cdUndoKey
 
+# Setup auto-activate virtualenv
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd autoactivate_virtualenv
+
+function autoactivate_virtualenv()
+{
+	if [[ -z $VIRTUAL_ENV ]]
+	then
+		activate_virtualenv
+	else
+		parentdir=$(dirname ${VIRTUAL_ENV})
+		if [[ $PWD/ != $parentdir/* ]]
+		then
+			deactivate
+			activate_virtualenv
+		fi
+	fi
+}
+
+function activate_virtualenv()
+{
+	local i_dir
+	i_dir=$PWD
+	until false
+	do
+		if [[ -f $i_dir/venv/bin/activate ]]
+		then
+			source $i_dir/venv/bin/activate
+		fi
+		i_dir=${i_dir%/*}
+		# i_dir=$(dirname $i_dir)
+		[[ $i_dir = *\/* ]] || break
+	done
+}
+
 # Source shell commons (do this last)
 source ${XDG_CONFIG_HOME}/.shell.common
