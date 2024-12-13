@@ -4,6 +4,7 @@
 --ignore=.gitignore
 --ignore=.gitmodules
 --ignore=install.sh
+--ignore=uncool
 --ignore=etc
 --dotfiles
 --restow
