@@ -3,7 +3,18 @@
 cwd=$(dirname "$0")
 cd "$cwd"
 
+echo "Stowing on ~/.config"
+
 stow .
+
+
+echo "Stowing uncool app configs"
+(
+	cd uncool;
+	stow .
+)
+
+echo "Populating global linux box configs"
 
 set -- "security/pam_env.conf" "sudoers.d/danilo"
 

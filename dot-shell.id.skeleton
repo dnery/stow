@@ -1,0 +1,24 @@
+# Stage database credentials
+PSQL_STAGE_USERNAME=
+PSQL_STAGE_PASSWORD=
+PSQL_STAGE_HOST=
+PSQL_STAGE_DB=
+
+# Preprod database credentials
+PSQL_PREPROD_USERNAME=
+PSQL_PREPROD_PASSWORD=
+PSQL_PREPROD_HOST=
+PSQL_PREPROD_DB=
+
+# Production database credentials
+PSQL_PROD_USERNAME=
+PSQL_PROD_PASSWORD=
+PSQL_PROD_HOST=
+PSQL_PROD_DB=
+
+# Var 0 is user name (only first name, no spaces)
+GIT_CONFIG_VALUE_0=
+
+# Var 1 is user email
+GIT_CONFIG_VALUE_1=
+
