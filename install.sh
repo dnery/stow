@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -eo pipefail
+
 cwd=$(dirname "$0")
 cd "$cwd"
 
