@@ -6,5 +6,7 @@
 --ignore=install.sh
 --ignore=uncool
 --ignore=etc
+--ignore=autostart
+--ignore=systemd
 --dotfiles
 --restow

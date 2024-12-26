@@ -29,4 +29,17 @@ for it in "$@"; do
 	fi
 done
 
+echo "Doing the thingy with KeepassXC ssh keys"
+
+kdbx="${HOME}/Sync/Secrets/Workstation.kdbx"
+keys=( edge blaze deploy )
+
+for key in "${keys[@]}"; do
+	keyfile="${HOME}/.ssh/${key}.pub"
+	if [[ ! -f $keyfile || ! -r $keyfile ]]; then
+		keepassxc-cli show -a Notes $kdbx $key > $keyfile
+		chmod 644 $keyfile
+	fi
+done
+
 echo "Done."
