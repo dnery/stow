@@ -9,6 +9,6 @@
 --dotfiles
 --restow
 --adopt
-# proplematic
---ignore=systemd
---ignore=autostart
+# temporary
+--ignore=zsh
+--ignore=wezterm
