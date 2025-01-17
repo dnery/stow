@@ -2,12 +2,12 @@
 live_config_reload = true
 
 [window]
-opacity = 0.75
+opacity = 0.8
 blur = true
 dimensions = { columns = 182, lines = 42}
 
 [font]
-size = 14.0
+size = 15.0
 
 [scrolling]
 history = 100000
