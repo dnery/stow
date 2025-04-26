@@ -4,10 +4,123 @@ live_config_reload = true
 [window]
 opacity = 0.8
 blur = true
-dimensions = { columns = 182, lines = 42}
+dimensions = { columns = 182, lines = 42 }
 
 [font]
-size = 15.0
+size = 18.0
+
+#[font.bold]
+#family = "JetBrainsMono NFM ExtraBold"
+#style = "ExtraBold"
+#
+#[font.bold_italic]
+#family = "JetBrainsMono NFM ExtraBold"
+#style = "ExtraBold Italic"
+#
+#[font.italic]
+#family = "JetBrainsMono NFM Light"
+#style = "Light Italic"
+#
+#[font.normal]
+#family = "JetBrainsMono NFM Light"
+#style = "Light"
+
+#[font.bold]
+#family = "VictorMono NFM"
+#style = "Bold"
+#
+#[font.bold_italic]
+#family = "VictorMono NFM Obl"
+#style = "Bold Oblique"
+#
+#[font.italic]
+#family = "VictorMono NFM SemiBold Obl"
+#style = "SemiBold Oblique"
+#
+#[font.normal]
+#family = "VictorMono NFM SemiBold"
+#style = "SemiBold"
+
+#[font.bold]
+#family = "ProFont IIx Nerd Font Mono"
+#style = "Bold"
+#
+#[font.bold_italic]
+#family = "ProFont IIx Nerd Font Mono"
+#style = "Bold Italic"
+#
+#[font.italic]
+#family = "ProFont IIx Nerd Font Mono"
+#style = "Italic"
+#
+#[font.normal]
+#family = "ProFont IIx Nerd Font Mono"
+#style = "Regular"
+
+[font.bold]
+family = "IosevkaTermSlab NFM"
+style = "Bold"
+
+[font.bold_italic]
+family = "IosevkaTermSlab NFM"
+style = "Bold Italic"
+
+[font.italic]
+family = "IosevkaTermSlab NFM"
+style = "Italic"
+
+[font.normal]
+family = "IosevkaTermSlab NFM"
+style = "Regular"
+
+#[font.bold]
+#family = "BigBlueTermPlus Nerd Font Mono"
+#style = "Bold"
+#
+#[font.bold_italic]
+#family = "BigBlueTermPlus Nerd Font Mono"
+#style = "Bold Italic"
+# 
+#[font.italic]
+#family = "BigBlueTermPlus Nerd Font Mono"
+#style = "Italic"
+# 
+#[font.normal]
+#family = "BigBlueTermPlus Nerd Font Mono"
+#style = "Regular"
+
+#[font.bold]
+#family = "More Perfect DOS VGA"
+#style = "Bold"
+#
+#[font.bold_italic]
+#family = "More Perfect DOS VGA"
+#style = "Bold Italic"
+#
+#[font.italic]
+#family = "More Perfect DOS VGA"
+#style = "Italic"
+#
+#[font.normal]
+#family = "More Perfect DOS VGA"
+#style = "Regular"
+
+#[font.bold]
+#family = "Pixel operator mono"
+#style = "Bold"
+#
+#[font.bold_italic]
+#family = "Pixel operator mono"
+#style = "Bold"
+# 
+#[font.italic]
+#family = "Pixel operator mono"
+#style = "Bold"
+# 
+#[font.normal]
+#family = "Pixel operator mono"
+#style = "Bold"
+
 
 [scrolling]
 history = 100000
